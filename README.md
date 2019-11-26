@@ -1,4 +1,4 @@
-# taco-randomizer
+# TheCatAPI
 
 ## Project setup
 ```

@@ -10,6 +10,10 @@ import Profile from "./views/Profile.vue";
 import Home from "./views/Home.vue";
 import Gatos from "./views/Gatos.vue";
 
+// Bar gallery
+import GalleryHeader from "./layout/starter/GalleryHeader";
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -19,7 +23,7 @@ export default new Router({
       path: "/ver",
       name: "ver",
       components: {
-        header: AppHeader,
+        header: GalleryHeader,
         default: Gatos,
         footer: AppFooter
       }

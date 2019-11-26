@@ -1,17 +1,17 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import vuetify from './plugins/vuetify';
 import Argon from "./plugins/argon-kit";
-import './registerServiceWorker'
-import store from './store/index'
+import store from './store/index';
+import './registerServiceWorker';
 
-import vuetify from '@/plugins/vuetify' // path to vuetify export
 
 Vue.config.productionTip = false;
 Vue.use(Argon);
 new Vue({
-  vuetify,
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount("#app");

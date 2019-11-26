@@ -1,64 +1,47 @@
 <template>
   <div>
-    <div class="container mt-5">
-      <div class="row">
-
+    <v-content>
+      <div class="container-fluid p-4">
+        <div class="row mt-3">
+          <div class="grid-gallery">
+            <a
+              class="grid-gallery__item card border-0 shadow"
+              href="#"
+              v-for="imagen in images"
+              :key="imagen.id"
+            >
+              <img class="grid-gallery__image" :src="imagen.url" />
+            </a>
+          </div>
+        </div>
+          <div class="text-center mt-3">
+            <v-pagination v-model="page" :length="10" circle color="#1565C0" next-icon="mdi-chevron-right" ></v-pagination>
+          </div>
       </div>
-     
-    </div>
-   
-
-    <div class="container-fluid  mt-5">
-       <div align="center">
-        <h3>Categorías</h3>
-           <base-button outline type="default">Filtro 1</base-button>
-           <base-button outline type="default">Filtro 2</base-button>
-           <base-button outline type="default">Filter 3</base-button>
-           <base-button outline type="default">Filter 4</base-button>
-           <base-button outline type="default">Filter 5</base-button>
-           <base-button outline type="default">Filter 6</base-button>
-        </div>
-      <div class="row mt-3">
-        <div class="grid-gallery">
-          <a
-            class="grid-gallery__item card border-0  shadow"
-            href="#"
-            v-for="imagen in images"
-            :key="imagen.id"
-          >
-            <img class="grid-gallery__image" :src="imagen.url" />
-          </a>
-        </div>
-      </div>
-        <div class="row mt-4" >
-          <base-pagination  :perPage="limit" :total="pagination_count" :value="page" style="margin: 0 auto">
-          
-          </base-pagination>
-            <!-- <button class="btn btn-primary"  v-on:input="nextBtn">siguiente</button> -->
-        </div>
-    </div>
+    </v-content>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import BasePagination from "@/components/BasePagination";
 export default {
   name: "Gatos",
-  components: {
-      BasePagination,
-  },
+  components: {},
   data() {
     return {
+      api_key: '4d798a51-42ad-49e1-b89d-6afa753ee6db',
+      categories: [],
+      selected_category:{},
       images: [],
-      order: "Desc",
-      page: 3,
-      limit: 20,
+      order: "Asc",
+      page: 1,
+      limit: 15,
       pagination_count: 0 //default until we get a result with the 'Pagination-Count' header in the response
     };
   },
   created() {
     this.getImages();
+    // this.getCategories();
   },
   watch: {
     // if the user changes any of these values, then make a new request to the API
@@ -70,6 +53,11 @@ export default {
     },
     order: function() {
       this.getImages();
+    },
+    selected_category: function()
+    {
+        console.log(this.selected_category)
+        this.getImages();
     }
   },
   computed: {
@@ -82,10 +70,25 @@ export default {
       this.page++;
       await this.getImages();
     },
+    async getCategories()
+    {
+        try{
+            axios.defaults.headers.common['x-api-key'] = this.api_key // Replace this with your API Key, as it's set to defaults it will be used from now onwards
+                    
+            let response = await axios.get('https://api.thecatapi.com/v1/categories/' ) 
+            this.categories = response.data;
+            // console.log("-- ("+this.categories.length +") Categories from TheCatAPI.com")
+                    
+            // pick one to display initially
+            this.selected_category = this.categories[2]
+        }catch(err){
+            console.log(err)
+        }
+    },
     async getImages() {
       try {
         axios.defaults.headers.common["x-api-key"] =
-          "4d798a51-42ad-49e1-b89d-6afa753ee6db"; // Replace this with your API Key
+          this.api_key; // Replace this with your API Key
 
         let query_params = {
           limit: this.limit,
@@ -99,10 +102,10 @@ export default {
 
         this.pagination_count = response.headers["pagination-count"];
         this.images = response.data;
-        console.log(
+       /*  console.log(
           "-- (" + this.images.length + ") Images from TheCatAPI.com"
-        );
-        console.log(this.pagination_count, "images available for this query.");
+        ); */
+        // console.log(this.pagination_count, "images available for this query.");
       } catch (err) {
         console.log(err);
       }
@@ -114,7 +117,6 @@ export default {
 
 
 <style scoped>
-
 .gal-item {
   overflow: hidden;
   padding: 3px;
