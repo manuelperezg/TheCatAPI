@@ -28,7 +28,7 @@
 
         <v-toolbar-title class="mr-12 align-center">
           <span class="title">
-            <a href="/">
+            <a href="TheCatAPI/">
               <img
                 src="https://gatosyhumanos.com/wp-content/uploads/2018/04/cropped-logo-3.png"
                 width="30px"

@@ -1,6 +1,7 @@
 # Buscador de imagenes
 
 _Este proyecto consume la API REST desde https://api.thecatapi.com/_
+_Puede ver un ejemplo del proyecto en https://manuelperezg.github.io/TheCatAPI/#/_
 
 ## Comenzando 🚀
 
