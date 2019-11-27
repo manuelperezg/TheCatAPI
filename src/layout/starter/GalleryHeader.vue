@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <v-app id="inspire"> -->
       <v-navigation-drawer v-model="drawer" app clipped>
         <v-list-item>
             <v-list-item-avatar>
@@ -17,27 +16,7 @@
               <v-list-item-title class="ml-2">{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
-          <v-list>
-            <v-list-item v-for="item in items2" :key="item.text" link>
-              <v-list-item-avatar>
-                <img :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`" alt />
-              </v-list-item-avatar>
-              <v-list-item-title class="ml-2" v-text="item.text" />
-            </v-list-item>
-          </v-list>
-          <!-- <v-list-item class="mt-4" link>
-            <v-list-item-action>
-              <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
-            </v-list-item-action>
-            <v-list-item-title class="grey--text text--darken-1">Browse Channels</v-list-item-title>
-          </v-list-item>
-          <v-list-item link>
-            <v-list-item-action>
-              <v-icon color="grey darken-1">mdi-settings</v-icon>
-            </v-list-item-action>
-            <v-list-item-title class="grey--text text--darken-1">Manage Subscriptions</v-list-item-title>
-          </v-list-item> -->
+         
         </v-list>
       </v-navigation-drawer>
 
@@ -58,18 +37,7 @@
           </span>
         </v-toolbar-title>
         <v-spacer />
-        <v-row align="center" style="max-width: 650px">
-          <v-text-field
-            :append-icon-cb="() => {}"
-            placeholder="Buscar..."
-            single-line
-            append-icon="search"
-            color="white"
-            hide-details
-          />
-        </v-row>
       </v-app-bar>
-    <!-- </v-app> -->
   </div>
 </template>
 
@@ -82,17 +50,9 @@ export default {
     drawer: null,
     items: [
       { icon: "trending_up", text: "Mas popular" },
-      { icon: "subscriptions", text: "Subscriptions" },
-      { icon: "history", text: "History" },
-      { icon: "featured_play_list", text: "Playlists" },
-      { icon: "watch_later", text: "Watch Later" }
-    ],
-    items2: [
-      { picture: 28, text: "Joseph" },
-      { picture: 38, text: "Apple" },
-      { picture: 48, text: "Xbox Ahoy" },
-      { picture: 58, text: "Nokia" },
-      { picture: 78, text: "MKBHD" }
+      { icon: "subscriptions", text: "Votes" },
+      { icon: "featured_play_list", text: "Favourites" },
+      { icon: "history", text: "History" }
     ]
   }),
   created() {
