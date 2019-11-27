@@ -2,7 +2,7 @@
   <section class>
     <v-app>
       <video autoplay muted loop id="myVideo">
-        <source src="@/assets/vendor/video/gatitos.mp4#t=45,120" type="video/mp4" />Your browser does not support HTML5 video.
+        <source src="https://github.com/manuelperezg/TheCatAPI/blob/master/src/assets/vendor/video/gatitos.mp4#t=45,120" type="video/mp4" />Your browser does not support HTML5 video.
       </video>
 
       <div class="container" style="margin-top:250px">
