@@ -10,6 +10,7 @@ import GalleryHeader from "./layout/starter/GalleryHeader";
 Vue.use(Router);
 
 export default new Router({
+  base:'TheCatAPI',
   linkExactActiveClass: "active",
   routes: [
     {
