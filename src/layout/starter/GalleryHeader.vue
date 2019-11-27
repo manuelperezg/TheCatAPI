@@ -3,7 +3,8 @@
       <v-navigation-drawer v-model="drawer" app clipped>
         <v-list-item>
             <v-list-item-avatar>
-            <v-img src="https://gatosyhumanos.com/wp-content/uploads/2018/04/cropped-logo-3.png"></v-img>
+            <v-img 
+            src="https://gatosyhumanos.com/wp-content/uploads/2018/04/cropped-logo-3.png"></v-img>
             </v-list-item-avatar>
         </v-list-item>
         <v-divider></v-divider>
